@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/crud
+    username: postgres
+    password: 198725
+  liquibase:
+    default-schema: main
+  jpa:
+    hibernate:
+      ddl-auto: validate

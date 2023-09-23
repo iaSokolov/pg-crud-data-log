@@ -1,0 +1,4 @@
+databaseChangeLog:
+  - include:
+      file: EMPLOYEE/master.yml
+      relativeToChangelogFile: true
