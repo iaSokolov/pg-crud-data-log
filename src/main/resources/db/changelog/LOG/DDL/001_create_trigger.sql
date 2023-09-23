@@ -1,5 +1,7 @@
 CREATE TABLE IF NOT EXISTS record_log
 (
+    id           uuid,
+    operation    uuid,
     "timestamp"  timestamp with time zone DEFAULT now() NOT NULL,
     "user"       text NOT NULL            DEFAULT CURRENT_USER,
     action       text NOT NULL,
@@ -25,8 +27,8 @@ CREATE FUNCTION log_insert()
 AS
 $$
 BEGIN
-    INSERT INTO main.record_log(action, table_schema, table_name, new_row)
-    SELECT TG_OP, TG_TABLE_SCHEMA, TG_RELNAME, to_jsonb(new_table)
+    INSERT INTO main.record_log(id, operation, action, table_schema, table_name, new_row)
+    SELECT new_table.id, new_table.operation, TG_OP, TG_TABLE_SCHEMA, TG_RELNAME, to_jsonb(new_table)
     FROM new_table;
     RETURN NULL;
 END;
@@ -54,8 +56,8 @@ CREATE FUNCTION log_delete()
 AS
 $$
 BEGIN
-    INSERT INTO main.record_log(action, table_schema, table_name, old_row)
-    SELECT TG_OP, TG_TABLE_SCHEMA, TG_RELNAME, to_jsonb(old_table)
+    INSERT INTO main.record_log(id, operation, action, table_schema, table_name, old_row)
+    SELECT old_table.id, old_table.operation, TG_OP, TG_TABLE_SCHEMA, TG_RELNAME, to_jsonb(old_table)
     FROM old_table;
     RETURN NULL;
 END;

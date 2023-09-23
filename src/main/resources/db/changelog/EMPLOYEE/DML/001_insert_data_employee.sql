@@ -1,6 +1,3 @@
 --liquibase formatted sql
 --changeset techgeeknext:inset-employee-01
-INSERT INTO employee VALUES(01, 'User1');
-INSERT INTO employee VALUES(02, 'User2');
-INSERT INTO employee VALUES(03, 'User3');
-INSERT INTO employee VALUES(04, 'User4');
+INSERT INTO employee VALUES('3c139381-3746-424b-aa1e-af42a02a2241', 'b81df73f-8bd4-43a8-9e15-2a028396d1f8','User1');
