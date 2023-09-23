@@ -1,4 +1,7 @@
 databaseChangeLog:
   - include:
+      file: LOG/master.yml
+      relativeToChangelogFile: true
+  - include:
       file: EMPLOYEE/master.yml
       relativeToChangelogFile: true

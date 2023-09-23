@@ -1,17 +1,13 @@
 databaseChangeLog:
-
   - changeSet:
       id: 1
-      author: techgeeknext
-
+      author: iasokolov@gmail.com
   - include:
       file: DDL/001_create_tables.sql
       relativeToChangelogFile: true
-
   - include:
       file: DML/001_insert_data_employee.sql
       relativeToChangelogFile: true
-
   - include:
       file: DML/002_insert_data_branch.sql
       relativeToChangelogFile: true

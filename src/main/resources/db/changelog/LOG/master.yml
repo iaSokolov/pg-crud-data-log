@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: iasokolov@gmail.com
+  - include:
+      file: DDL/001_create_trigger.sql
+      relativeToChangelogFile: true
