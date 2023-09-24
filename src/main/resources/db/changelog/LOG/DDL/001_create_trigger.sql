@@ -40,12 +40,16 @@ CREATE FUNCTION log_update()
 AS
 $$
 BEGIN
-    INSERT INTO main.record_log(action, table_schema, table_name, old_row, new_row)
-    SELECT TG_OP, TG_TABLE_SCHEMA, TG_RELNAME, old_row, new_row
+    INSERT INTO main.record_log(id, operation, action, table_schema, table_name, old_row, new_row)
+    SELECT old_row_id, new_row_operation, TG_OP, TG_TABLE_SCHEMA, TG_RELNAME, old_row, new_row
     FROM UNNEST(
+                 ARRAY(SELECT id FROM old_table),
+                 ARRAY(SELECT operation FROM old_table),
                  ARRAY(SELECT to_jsonb(old_table) FROM old_table),
+                 ARRAY(SELECT id FROM new_table),
+                 ARRAY(SELECT operation FROM new_table),
                  ARRAY(SELECT to_jsonb(new_table) FROM new_table))
-             AS t(old_row, new_row);
+             AS t(old_row_id, old_row_operation, old_row, new_row_id, new_row_operation, new_row);
     RETURN NULL;
 END;
 $$;
