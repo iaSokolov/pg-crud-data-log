@@ -2,17 +2,17 @@
 --changeset techgeeknext:create-tables
 CREATE TABLE IF NOT EXISTS employee
 (
-    id        uuid primary key,
-    operation uuid,
-    name      VARCHAR(40)
+    id    uuid primary key,
+    op_id uuid,
+    name  VARCHAR(40)
 );
 
 CREATE TABLE IF NOT EXISTS branch
 (
-    id        uuid primary key,
-    operation uuid,
-    name      VARCHAR(40),
-    emp_id    uuid,
+    id     uuid primary key,
+    op_id  uuid,
+    name   VARCHAR(40),
+    emp_id uuid,
     FOREIGN KEY (emp_id)
         REFERENCES employee (id)
         ON DELETE CASCADE
