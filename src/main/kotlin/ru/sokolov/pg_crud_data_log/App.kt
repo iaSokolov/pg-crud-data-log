@@ -1,4 +1,4 @@
-package ru.sokolov.pgcruddatalog
+package ru.sokolov.pg_crud_data_log
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

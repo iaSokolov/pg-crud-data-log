@@ -3,5 +3,8 @@ databaseChangeLog:
       file: 001_LOG/master.yml
       relativeToChangelogFile: true
   - include:
-      file: 002_EMPLOYEE/master.yml
+      file: 002_OPERATION/master.yml
+      relativeToChangelogFile: true
+  - include:
+      file: 003_EMPLOYEE/master.yml
       relativeToChangelogFile: true

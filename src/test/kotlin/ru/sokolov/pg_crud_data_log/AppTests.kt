@@ -1,4 +1,4 @@
-package ru.sokolov.pgcruddatalog
+package ru.sokolov.pg_crud_data_log
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
@@ -9,5 +9,4 @@ class AppTests {
 	@Test
 	fun contextLoads() {
 	}
-
 }
